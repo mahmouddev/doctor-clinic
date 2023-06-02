@@ -1,0 +1,71 @@
+<?php
+namespace App\Helpers;
+use App\Models\Setting;
+class SettingsHelper {
+
+    public $settings;
+    public function __construct(){
+        $this->settings = collect($this->settings);
+    }
+    public function getAllSettings(){
+        $settings = Setting::get();
+
+        foreach($settings as $setting){
+            if(is_object(json_decode($setting->value))){
+                $this->settings[$setting->key] =  json_decode($setting->value,true);
+            }
+            $this->settings[$setting->key] = $setting->value;
+        }
+
+        $this->settings["get_website_logo"] = $this->website_logo();
+        $this->settings["get_website_cover"] = $this->website_cover();
+        $this->settings["get_website_wide_logo"] = $this->website_wide_logo();
+        $this->settings["get_website_icon"] = $this->website_icon();
+        
+        return $this->settings;
+    }
+    public function website_logo(){
+
+        $logo = $this->settings['website_logo'] ?? null;
+        
+        if(!$logo)
+            return env('DEFAULT_IMAGE_LOGO');
+        else
+            return env("STORAGE_URL").'/'.\MainHelper::get_conversion($logo,"thumb"); 
+
+    }
+
+    public function website_cover(){
+
+        $cover = $this->settings['website_cover'] ?? null;
+
+        if(!$cover)
+            return env('DEFAULT_IMAGE_COVER');
+        else
+            return env("STORAGE_URL").'/'.\MainHelper::get_conversion($cover,"original");
+    }
+
+    public function website_wide_logo(){
+
+        $wideLogo = $this->settings['website_logo'] ?? null;
+
+        if(!$wideLogo)
+            return env('DEFAULT_IMAGE_WIDELOGO');
+        else
+            return env("STORAGE_URL").'/'.\MainHelper::get_conversion($wideLogo,"thumb");
+    }
+    public function website_icon(){
+
+        $websiteIcon = $this->settings['website_icon'] ?? null;
+
+        if(!$websiteIcon)
+            return env('DEFAULT_IMAGE_FAVICON');
+        else
+            return env("STORAGE_URL").'/'.\MainHelper::get_conversion($websiteIcon,"tiny");
+    }
+
+
+
+
+
+}
