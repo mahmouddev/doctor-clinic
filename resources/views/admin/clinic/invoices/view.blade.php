@@ -186,7 +186,7 @@
                                     </div>
                                     <div class="d-flex justify-content-end">
                                         <p class="text-muted me-3">{{ __('Discount')}}:</p>
-                                        <span>-${{ number_format(($invoice->total_price - ($invoice->discount ?? 0.00)), 2, '.', ' ') }}</span>
+                                        <span>-${{ number_format(($invoice->discount ?? 0.00), 2, '.', ' ') }}</span>
                                     </div>
                                     <div class="d-flex justify-content-end mt-3">
                                         <h5 class="me-3">{{ __('Total')}}:</h5>
