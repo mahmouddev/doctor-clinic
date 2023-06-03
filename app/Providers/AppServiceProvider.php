@@ -36,7 +36,7 @@ class AppServiceProvider extends ServiceProvider
             $settings = (new \App\Helpers\SettingsHelper)->getAllSettings();
             View::share('settings', $settings);
         }catch(\Exception $e){
-          dd($e->getMessage());  
+          //dd($e->getMessage());  
         }
 
     }
