@@ -1,4 +1,7 @@
 {
+  "__plugin-vue_export-helper-77894273.js": {
+    "file": "assets/_plugin-vue_export-helper-77894273.js"
+  },
   "node_modules/flag-icons/flags/1x1/ac.svg": {
     "file": "assets/ac-7f066d2b.svg",
     "src": "node_modules/flag-icons/flags/1x1/ac.svg"
@@ -2295,6 +2298,35 @@
     "file": "assets/NotoKufiArabic-Regular-5fb73d94.woff2",
     "src": "public/fonts/kufi-fixed/NotoKufiArabic-Regular.woff2"
   },
+  "public/installer/css/style.css": {
+    "file": "assets/style-8c1dae28.css",
+    "isEntry": true,
+    "src": "public/installer/css/style.css"
+  },
+  "public/installer/fonts/fontawesome-webfont.eot": {
+    "file": "assets/fontawesome-webfont-7bfcab6d.eot",
+    "src": "public/installer/fonts/fontawesome-webfont.eot"
+  },
+  "public/installer/fonts/fontawesome-webfont.svg": {
+    "file": "assets/fontawesome-webfont-ad615792.svg",
+    "src": "public/installer/fonts/fontawesome-webfont.svg"
+  },
+  "public/installer/fonts/fontawesome-webfont.ttf": {
+    "file": "assets/fontawesome-webfont-aa58f33f.ttf",
+    "src": "public/installer/fonts/fontawesome-webfont.ttf"
+  },
+  "public/installer/fonts/fontawesome-webfont.woff": {
+    "file": "assets/fontawesome-webfont-ba0c59de.woff",
+    "src": "public/installer/fonts/fontawesome-webfont.woff"
+  },
+  "public/installer/fonts/fontawesome-webfont.woff2": {
+    "file": "assets/fontawesome-webfont-2adefcbc.woff2",
+    "src": "public/installer/fonts/fontawesome-webfont.woff2"
+  },
+  "public/installer/img/background.jpg": {
+    "file": "assets/background-b5030b43.jpg",
+    "src": "public/installer/img/background.jpg"
+  },
   "public/webfonts/fa-brands-400.eot": {
     "file": "assets/fa-brands-400-78e010e2.eot",
     "src": "public/webfonts/fa-brands-400.eot"
@@ -2401,8 +2433,19 @@
     "src": "resources/css/dashboard.css"
   },
   "resources/js/dashboard.js": {
-    "file": "assets/dashboard-1bab333b.js",
+    "file": "assets/dashboard-5210d205.js",
+    "imports": [
+      "__plugin-vue_export-helper-77894273.js"
+    ],
     "isEntry": true,
     "src": "resources/js/dashboard.js"
+  },
+  "resources/js/installer.js": {
+    "file": "assets/installer-cdf77927.js",
+    "imports": [
+      "__plugin-vue_export-helper-77894273.js"
+    ],
+    "isEntry": true,
+    "src": "resources/js/installer.js"
   }
 }

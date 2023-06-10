@@ -12,8 +12,10 @@ export default defineConfig({
     plugins: [
         laravel({
             input: [
+              'public/installer/css/style.css',
               'resources/css/dashboard.css',
               'resources/js/dashboard.js',
+              'resources/js/installer.js',
               ],
             refresh: true,
         }),

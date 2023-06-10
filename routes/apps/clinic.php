@@ -6,7 +6,7 @@ use App\Http\Controllers\Backend\Clinic\BackendAppointmentController;
 use App\Http\Controllers\Backend\Clinic\BackendPrescriptionController;
 
 Route::prefix('admin')
-    ->middleware(['auth', 'ActiveAccount'])
+    ->middleware(['auth'])
     ->name('admin.clinic.')
     ->group(function () {
 
