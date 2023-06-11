@@ -1,5 +1,5 @@
 <ul class="list">
-    @foreach($permissions['permissions'] as $permission)
+    @foreach($directoriesPermissions['permissions'] as $permission)
     <li class="list__item list__item--permissions {{ $permission['isSet'] ? 'success' : 'error' }}">
         {{ $permission['folder'] }}
         <span>

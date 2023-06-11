@@ -1,5 +1,5 @@
 
-    @foreach($requirements['requirements'] as $type => $requirement)
+    @foreach($serverComponents['requirements'] as $type => $requirement)
         <ul class="list">
             <li class="list__item list__title {{ $phpSupportInfo['supported'] ? 'success' : 'error' }}">
                 <strong>{{ ucfirst($type) }}</strong>
@@ -17,7 +17,7 @@
                     </span>
                 @endif
             </li>
-            @foreach($requirements['requirements'][$type] as $extention => $enabled)
+            @foreach($serverComponents['requirements'][$type] as $extention => $enabled)
                 <li class="list__item {{ $enabled ? 'success' : 'error' }}">
                     {{ $extention }}
                     <i class="fa fa-fw fa-{{ $enabled ? 'check-circle-o' : 'exclamation-circle' }} row-icon" aria-hidden="true"></i>

@@ -2299,7 +2299,7 @@
     "src": "public/fonts/kufi-fixed/NotoKufiArabic-Regular.woff2"
   },
   "public/installer/css/style.css": {
-    "file": "assets/style-8c1dae28.css",
+    "file": "assets/style-8efd243f.css",
     "isEntry": true,
     "src": "public/installer/css/style.css"
   },
@@ -2322,10 +2322,6 @@
   "public/installer/fonts/fontawesome-webfont.woff2": {
     "file": "assets/fontawesome-webfont-2adefcbc.woff2",
     "src": "public/installer/fonts/fontawesome-webfont.woff2"
-  },
-  "public/installer/img/background.jpg": {
-    "file": "assets/background-b5030b43.jpg",
-    "src": "public/installer/img/background.jpg"
   },
   "public/webfonts/fa-brands-400.eot": {
     "file": "assets/fa-brands-400-78e010e2.eot",
@@ -2441,7 +2437,7 @@
     "src": "resources/js/dashboard.js"
   },
   "resources/js/installer.js": {
-    "file": "assets/installer-cdf77927.js",
+    "file": "assets/installer-69d25998.js",
     "imports": [
       "__plugin-vue_export-helper-77894273.js"
     ],

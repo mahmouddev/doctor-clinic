@@ -13,26 +13,25 @@
     <div class="loader"  v-if="loader && (requirements_page || permission_page)"></div>
     <div class="buttons">
         <a class="button" @click="permissions()" v-if="requirements_page && permissions_button && !loader">
-            Check Permissions
-            <i class="fa fa-angle-right fa-fw" aria-hidden="true"></i> 
+            Check Directories Permissions
+             
         </a>
         <a class="button" @click="requirements()" v-if="!requirements_page && !permission_page && !complete_installation_page">
             Start instalation
-            <i class="fa fa-angle-right fa-fw" aria-hidden="true"></i>
+            
         </a>
         <a class="button" @click="completeInstallationPage()" v-if="permission_page && complete_installation_button && !loader">
             Configure Environment
-            <i class="fa fa-angle-right fa-fw" aria-hidden="true"></i>
+            
         </a>
-        <a class="button" @click="permissions()" v-if="permission_page && !complete_installation_button && !loader"
-            style="background-color: #fd0909;">
+        <a class="button" @click="permissions()" v-if="permission_page && !complete_installation_button && !loader">
             Retry
-            <i class="fa fa-angle-right fa-fw" aria-hidden="true"></i>
+            
         </a>
     </div>
     <div class="tabs tabs-full" v-if="complete_installation_page">
         <div v-if="finished">
-            <h6 style="margin: 0; padding: 0; font-size:17px" v-if="finished"> Installation Finished</h6>
+            <h6 v-if="finished"> Installation Finished</h6>
             <p><strong><small>Migration &amp; Seed Console Output:</small></strong></p>
             <pre><code>{{ dbOutputLog }}</code></pre>
 
@@ -164,14 +163,13 @@
                     </div>
                     <div class="loader" v-if="loader"></div>
                     <div class="buttons" v-if="!loader">
-                        <button class="button" type="button" style="background-color: #66cd66; font-size:14px"
-                            @click="testConnection()" v-if="!connection_exists">
+                        <button class="button" type="button" @click="testConnection()" v-if="!connection_exists">
                             Test DB Connection
-                            <i class="fa fa-angle-right fa-fw" aria-hidden="true"></i>
+                            
                         </button>
                         <button class="button" type="button" @click="completeInstallation()" v-if="connection_exists">
                             Install
-                            <i class="fa fa-angle-right fa-fw" aria-hidden="true"></i>
+                            
                         </button>
                     </div>
 

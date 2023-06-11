@@ -7,24 +7,6 @@
     Doctor Clinic Installer
 @endsection
 @section('style')
-    <style>
-        .box {
-            width: 525px !important;
-        }
-
-        .left-form {
-            width: 50%;
-            margin-right: 10px;
-        }
-
-        .right-form {
-            width: 50%;
-        }
-
-        .row {
-            display: flex;
-        }
-    </style>
 @endsection
 @section('container')
     <installer></installer>
@@ -32,11 +14,11 @@
 @section('b-script')
     <script>
         window.installer = {
-            requirements_url:          "{{ route('requirements') }}",
+            requirements_url:          "{{ route('server-components') }}",
             login_url:                 "{{ route('login') }}",
-            permissions_url:           "{{ route('permissions') }}",
+            permissions_url:           "{{ route('directory-permissions') }}",
             complete_installation_url: "{{ route('complete-installation') }}",
-            test_connection_url:       "{{ route('test-connection') }}",
+            test_connection_url:       "{{ route('check-db-connection') }}",
             is_sub_directory:          "{{ $sub_directory }}",
             timezones: JSON.parse('{!! $timezones !!}'),
             host: "{{ $host }}",

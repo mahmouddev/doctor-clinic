@@ -5,8 +5,6 @@ namespace App\Repositories;
 use App\Models\Setting;
 use Exception;
 use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Symfony\Component\Console\Output\BufferedOutput;
 use Throwable;
@@ -203,8 +201,8 @@ class InstallerRepositoryEloquent extends BaseRepository implements InstallerRep
             file_put_contents($this->envPath, $envFileData);
             $database = config('database.connections.' . $request['database_connection']);
 
-            $database["host"] = $request['database_hostname'];
-            $database["port"] = $request['database_port'];
+            $database["host"]     = $request['database_hostname'];
+            $database["port"]     = $request['database_port'];
             $database["database"] = $request['database_name'];
             $database["username"] = $request['database_username'];
             $database["password"] = $request['database_password'];
@@ -214,7 +212,10 @@ class InstallerRepositoryEloquent extends BaseRepository implements InstallerRep
             $results = false;
             $message = 'Unable to save the .env file, Please create it manually.';
         }
-        return ['results' => $results, 'message' => $message];
+        return [
+            'results' => $results, 
+            'message' => $message
+        ];
     }
 
     public function migrateAndSeed()
@@ -265,7 +266,11 @@ class InstallerRepositoryEloquent extends BaseRepository implements InstallerRep
         $finalStatusMessage = $this->createdInfo();
         $finalEnvFile = $this->getEnvContent();
 
-        return ['finalMessages' => $finalMessages, 'finalStatusMessage' => $finalStatusMessage, 'finalEnvFile' => $finalEnvFile];
+        return [
+            'finalMessages' => $finalMessages, 
+            'finalStatusMessage' => $finalStatusMessage, 
+            'finalEnvFile' => $finalEnvFile
+        ];
     }
 
     public function runFinal($same_directory)
@@ -274,8 +279,9 @@ class InstallerRepositoryEloquent extends BaseRepository implements InstallerRep
 
         $this->generateKey($outputLog);
         $this->linkStorage($outputLog);
-        if (!$same_directory)
+        if (!$same_directory){
             $this->clearRoute($outputLog);
+        }
 
         return $outputLog->fetch();
     }
@@ -305,20 +311,24 @@ class InstallerRepositoryEloquent extends BaseRepository implements InstallerRep
 
     private function updateInstalledStatus()
     {
-        $settings = Setting::updateOrCreate(
-            ['key' =>  'installed'],
-            ['value' => 1]
-        );
-       
-        return $settings;
+        try {
+            Setting::updateOrCreate(
+                ['key' =>  'installed'],
+                ['value' => 1]
+            );
+        } catch (Throwable $th) {
+            return null;
+        }
+        return true;
     }
 
     private function setTimezone($timezone)
     {
         try {
-            $settings = Setting::first();
-            $settings->timezone = $timezone;
-            $settings->save();
+            Setting::updateOrCreate(
+                ['key' =>  'timezone'],
+                ['value' => $timezone]
+            );
         } catch (Throwable $th) {
             return null;
         }

@@ -7,7 +7,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-
+use Illuminate\Validation\ValidationException;
 class InstallerController extends Controller
 {
     protected $installer;
@@ -27,15 +27,15 @@ class InstallerController extends Controller
         ]);
     }
 
-    public function requirements()
+    public function serverComponents()
     {
         $phpSupportInfo = $this->installer->checkPHPversion(
             config('installer.core.minPhpVersion')
         );
-        $requirements = $this->installer->check(
-            config('installer.requirements')
+        $serverComponents = $this->installer->check(
+            config('installer.server_components')
         );
-        $html = view('vendor.installer.requirements', compact('requirements', 'phpSupportInfo'))->render();
+        $html = view('vendor.installer.server-components', compact('serverComponents', 'phpSupportInfo'))->render();
         $status = false;
         if (!isset($requirements['errors']) && $phpSupportInfo['supported']) {
             $status = true;
@@ -44,12 +44,12 @@ class InstallerController extends Controller
     }
 
 
-    public function permissions()
+    public function directoryPermissions()
     {
-        $permissions = $this->installer->checkPermission(
-            config('installer.permissions')
+        $directoriesPermissions = $this->installer->checkPermission(
+            config('installer.directories_permissions')
         );
-        $html = view('vendor.installer.permissions', compact('permissions'))->render();
+        $html = view('vendor.installer.directories-permissions', compact('directoriesPermissions'))->render();
         $status = false;
         if (!isset($permissions['errors']))
             $status = true;
@@ -84,7 +84,7 @@ class InstallerController extends Controller
                 return response()->json(['status_code' => 500, 'errors' => $res['message']]);
         } catch (Exception $e) {
             Log::error($e->getMessage());
-            if ($e instanceof \Illuminate\Validation\ValidationException) {
+            if ($e instanceof ValidationException) {
                 $errors = $e->errors();
                
                 return response()->json(['status_code' => 422, 'errors' => $errors,]);
@@ -95,7 +95,7 @@ class InstallerController extends Controller
         return response()->json(['status_code' => 200, 'dbOutputLog' => $outputLog['dbOutputLog'], 'final' => $final]);
     }
 
-    public function testDBConnection(Request $request)
+    public function checkDbConnection(Request $request)
     {
         try {
             $request->validate([
@@ -119,7 +119,7 @@ class InstallerController extends Controller
 
             DB::connection('test_connection')->getPdo();
         } catch (Exception $e) {
-            if ($e instanceof \Illuminate\Validation\ValidationException) {
+            if ($e instanceof ValidationException) {
                 $errors = $e->errors();
                 return response()->json(['status_code' => 422, 'errors' => $errors, 'message' => 'something went wrong']);
             }

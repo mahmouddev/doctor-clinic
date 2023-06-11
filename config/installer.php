@@ -15,7 +15,7 @@ return [
     'core' => [
         'minPhpVersion' => '8.0',
     ],
-    'requirements' => [
+    'server_components' => [
         'php' => [
             'openssl',
             'pdo',
@@ -43,7 +43,7 @@ return [
     | requires more permissions just add them to the array list bellow.
     |
     */
-    'permissions' => [
+    'directories_permissions' => [
         'storage/framework/'     => '775',
         'storage/app/'           => '775',
         'storage/logs/'          => '775',
@@ -73,48 +73,4 @@ return [
             ],
         ],
     ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Installed Middleware Options
-    |--------------------------------------------------------------------------
-    | Different available status switch configuration for the
-    | canInstall middleware located in `canInstall.php`.
-    |
-    */
-    'installed' => [
-        'redirectOptions' => [
-            'route' => [
-                'name' => 'welcome',
-                'data' => [],
-            ],
-            'abort' => [
-                'type' => '404',
-            ]
-        ],
-    ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Selected Installed Middleware Option
-    |--------------------------------------------------------------------------
-    | The selected option fo what happens when an installer instance has been
-    | Default output is to `/resources/views/error/404.blade.php` if none.
-    | The available middleware options include:
-    | route, abort, dump, 404, default, ''
-    |
-    */
-    'installedAlreadyAction' => '',
-
-    /*
-    |--------------------------------------------------------------------------
-    | Updater Enabled
-    |--------------------------------------------------------------------------
-    | Can the application run the '/update' route with the migrations.
-    | The default option is set to False if none is present.
-    | Boolean value
-    |
-    */
-    'updaterEnabled' => 'true',
-
 ];

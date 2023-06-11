@@ -5,8 +5,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/install',                [InstallerController::class, 'index'])->name('install');
 // json
-Route::get('/requirements',           [InstallerController::class, 'requirements'])->name('requirements');
+Route::get('/server-components',      [InstallerController::class, 'serverComponents'])->name('server-components');
 // json
-Route::get('/permissions',            [InstallerController::class, 'permissions'])->name('permissions');
-Route::post('/test-connection',       [InstallerController::class, 'testDBConnection'])->name('test-connection');
+Route::get('/directory-permissions',  [InstallerController::class, 'directoryPermissions'])->name('directory-permissions');
+Route::post('/check-db-connection',   [InstallerController::class, 'checkDbConnection'])->name('check-db-connection');
 Route::post('/complete-installation', [InstallerController::class, 'completeInstallation'])->name('complete-installation');
