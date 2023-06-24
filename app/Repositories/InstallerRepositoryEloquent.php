@@ -195,7 +195,15 @@ class InstallerRepositoryEloquent extends BaseRepository implements InstallerRep
             'DB_PORT=' . $request['database_port'] . "\n" .
             'DB_DATABASE=' . $request['database_name'] . "\n" .
             'DB_USERNAME=' . $request['database_username'] . "\n" .
-            'DB_PASSWORD=' . $request['database_password'] . "\n\n";
+            'DB_PASSWORD=' . $request['database_password'] . "\n\n" .
+            'DEFAULT_IMAGE="'.$app_url .'/images/default/image.jpg"' . "\n" .
+            'DEFAULT_IMAGE_FAVICON="'.$app_url .'/images/default/favicon.png"'  . "\n" .
+            'DEFAULT_IMAGE_AVATAR="'.$app_url .'/images/default/avatar.png"'  . "\n" .
+            'DEFAULT_IMAGE_LOGO="'.$app_url .'/images/default/logo.png"'  . "\n" .
+            'DEFAULT_IMAGE_WIDELOGO="'.$app_url .'/images/default/wide-logo.png"'  . "\n" .
+            'DEFAULT_IMAGE_COVER="'.$app_url .'/images/default/cover.png"'  . "\n" .
+            'DEFAULT_IMAGE_NOTIFICATION="'.$app_url .'/images/default/notification.png"' . "\n\n";
+            
 
         try {
             file_put_contents($this->envPath, $envFileData);
@@ -283,6 +291,7 @@ class InstallerRepositoryEloquent extends BaseRepository implements InstallerRep
             $this->clearRoute($outputLog);
         }
 
+        $this->clearConfig();
         return $outputLog->fetch();
     }
     private function generateKey(BufferedOutput $outputLog)
@@ -343,7 +352,26 @@ class InstallerRepositoryEloquent extends BaseRepository implements InstallerRep
             return null;
         }
 
+
+        try {
+            Artisan::call('config:clear');
+        } catch (Exception $e) {
+            return null;
+        }
+
         return $outputLog;
+    }
+
+    private function clearConfig()
+    {
+    
+        try {
+            Artisan::call('config:clear');
+        } catch (Exception $e) {
+            return null;
+        }
+
+        return true;
     }
 
     public function createdInfo()

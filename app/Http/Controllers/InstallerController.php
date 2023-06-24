@@ -69,7 +69,7 @@ class InstallerController extends Controller
         $rules = config('installer.environment.form.rules');
         try {
             $request->validate($rules);
-            $app_url = str_replace("environment/save", "", $request->url());
+            $app_url = str_replace("environment/save", "", url('/'));
             $res = $this->installer->saveFileWizard($request->all(), $app_url);
             $data['customer_details']['host'] = $app_url;
             $same_directory = false;
