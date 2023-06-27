@@ -175,7 +175,7 @@ return [
         ],
         'admin' => [
             'users' => 'c,r,u,d',
-            'roles' => 'r',
+            'roles' => 'c,r,u,d',
             'hub-files' => 'c,r,u,d',
             'profile' => 'r,u',
         ],
