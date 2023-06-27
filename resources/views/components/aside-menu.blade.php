@@ -56,7 +56,7 @@
             </li>
             @endcan
 
-            @can('users-read')
+            @can('patients-read')
             <li class="nav-item">
                 <a href="{{ route('admin.clinic.patients.index') }}" class="col-12 px-0">
                     <div class="col-12 item-container px-0 d-flex ">
@@ -133,7 +133,7 @@
                 </a>
             </li>
             @endcan
-            
+             @can('settings-update')
             <li class="nav-item has-submenu">
                 <a class="link" href="#">
                     <div class="col-12 item-container px-0 d-flex ">
@@ -157,7 +157,8 @@
                     </li>
                      @endcan
                 </ul>  
-            </li>              
+            </li> 
+             @endcan             
             <a href="#" class="col-12 px-0" onclick="document.getElementById('logout-form').submit();">
                 <div class="col-12 item-container px-0 d-flex ">
                     <div style="width: 50px" class="px-1 text-center">
