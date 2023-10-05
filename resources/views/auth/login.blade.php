@@ -33,7 +33,7 @@
                             @csrf
                         
                             <div class="col-12 p-0 mb-5 mt-3" style="width: 550px;max-width: 100%;margin: 0px auto;">
-                                <h3 class="mb-4 text-center font-4">{{ __('Login') }}</h3> 
+                                <h3 class="mb-4 text-center font-4">{{ __( 'Login to :app_name' , ['app_name' => env( \Str::upper(app()->getLocale())."_APP_NAME")] )  }}</h3> 
                             </div>
 
                             <div class="form-group row mb-4 col-12 px-0 pt-2">

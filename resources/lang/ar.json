@@ -104,5 +104,7 @@
     "Required amount" : "المبلغ المستحق",
     "Recieved" : "المبلغ المستلم",
     "Change" : "الباقى",
-    "Hey" : "أهلا"
+    "Hey" : "أهلا",
+    "Login to :app_name" : "تسجيل الدخول الى :app_name",
+    "Login" : "تسجيل دخول"
 }
