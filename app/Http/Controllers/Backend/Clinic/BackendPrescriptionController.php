@@ -42,13 +42,17 @@ class BackendPrescriptionController extends Controller
      */
     public function index(Request $request)
     {
-        $prescriptions = $this->repository->where(function ($q) use ($request) {
+        $prescriptions = $this->repository->scopeQuery(function($q) use ($request){
+            $q->leftJoin('patients' , 'patients.id' , 'patient_id')
+                ->select('prescriptions.*' , 'patients.name', 'patients.phone', 'patients.email');
             if ($request->id != null)
                 $q->where('id', $request->id);
             if ($request->q != null)
-                $q->where('name', 'LIKE', '%' . $request->q . '%')
-                ->orWhere('phone', 'LIKE', '%' . $request->q . '%')
-                ->orWhere('email', 'LIKE', '%' . $request->q . '%');
+                $q->where('patients.name', 'LIKE', '%' . $request->q . '%')
+                    ->orWhere('patients.phone', 'LIKE', '%' . $request->q . '%')
+                    ->orWhere('patients.email', 'LIKE', '%' . $request->q . '%');
+                return $q;
+
         })->orderBy('id', 'DESC')->paginate();
 
         return view('admin.clinic.prescriptions.index', compact('prescriptions'));

@@ -58,6 +58,18 @@
                                         </span>
                                     </div>
                                 </div>
+
+                                <div class="col-lg-12 p-2  mb-2">
+                                    <div class="">
+                                        {{ __('AMOUNT')}}
+                                    </div>
+                                    <div class="pt-1 position-relative">
+                                        <span class="position-absolute top-30 px-2">
+                                            <i class="fas fa-dollar-sign"></i>
+                                        </span>
+                                        <input type="number" name="total" step="0.1" min="0" class="form-control px-4 @error('total') is-invalid @enderror" value="{{old('total')}}" >
+                                    </div>
+                                </div>
                             </div>
                         </div>
 

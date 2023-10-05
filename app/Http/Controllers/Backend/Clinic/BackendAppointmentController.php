@@ -42,13 +42,16 @@ class BackendAppointmentController extends Controller
      */
     public function index(Request $request)
     {
-        $appointments = $this->repository->where(function ($q) use ($request) {
+        $appointments = $this->repository->scopeQuery(function($q) use ($request){
+            $q->leftJoin('patients' , 'patients.id' , 'patient_id')
+                ->select('appointments.*' , 'patients.name', 'patients.phone', 'patients.email');
             if ($request->id != null)
                 $q->where('id', $request->id);
             if ($request->q != null)
-                $q->where('name', 'LIKE', '%' . $request->q . '%')
-                ->orWhere('phone', 'LIKE', '%' . $request->q . '%')
-                ->orWhere('email', 'LIKE', '%' . $request->q . '%');
+                $q->where('patients.name', 'LIKE', '%' . $request->q . '%')
+                    ->orWhere('patients.phone', 'LIKE', '%' . $request->q . '%')
+                    ->orWhere('patients.email', 'LIKE', '%' . $request->q . '%');
+                return $q;
         })->orderBy('id', 'DESC')->paginate();
 
         $todayAppointments = $this->repository->whereDate('dov', today())

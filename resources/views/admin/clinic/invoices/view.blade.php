@@ -132,7 +132,7 @@
                     <div class="col-lg-12 col-xl-7">
                         <div class="card">
                             <div class="card-body p-5">
-                                <h2>Hey {{ $invoice->appointment->patient->name}},</h2>
+                                <h2>{{__("Hey")}} {{ $invoice->appointment->patient->name}},</h2>
                                 <p class="fs-sm">
                                     {!!  __('This is the receipt for a payment of :price (USD) you made to us.' , ['price' => "<strong>$.{$invoice->total_price}</strong>" ]) !!}
                                 </p>
@@ -168,7 +168,7 @@
                                                 {{__('Description')}}
                                             </th>
                                             <th scope="col" class="fs-sm text-dark text-uppercase-bold-sm text-end px-0">
-                                                {{__('Amount')}}
+                                                {{__('AMOUNT')}}
                                             </th>
                                         </tr>
                                     </thead>

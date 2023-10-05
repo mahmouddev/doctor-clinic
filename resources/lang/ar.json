@@ -6,6 +6,7 @@
     "Show" : "عرض",
     "Show all" : "عرض الكل",
     "Save" : "حفظ",
+    "View" : "عرض",
     "Process success message" : "تمت العملية بنجاح",
     "There was a problem submitting the form." : "هناك مشكلة اعتماد النموذج", 
     "Total" : "الإجمالى",
@@ -94,9 +95,14 @@
     "Payment Date": "تاريخ انشاء الفاتوره",
     "Signature": "التوقيع",
     "Print" : "طباعة",
-    "This is the prescription for a visit in :date .": "هذه هي وصفة الزيارة في :date .",
+    "This is the prescription for a visit in :date .": "هذه هي الوصفه الطبية الخاصة بالزيارة في :date .",
     "Discount": "قيمة الخصم",
     "Subtotal" : "قيمة الفاتورة",
     "AMOUNT" : "القيمة",
-    "This is the receipt for a payment of :price (USD) you made to us." : "هذا هو إيصال الدفع :price (بالدولار الأمريكي) الذي قدمته لنا."
+    "This is the receipt for a payment of :price (USD) you made to us." : "هذا هو إيصال الدفع :price (بالدولار الأمريكي) الذي قدمته لنا.",
+    "Pay invoice" : "دفع الفاتوره",
+    "Required amount" : "المبلغ المستحق",
+    "Recieved" : "المبلغ المستلم",
+    "Change" : "الباقى",
+    "Hey" : "أهلا"
 }

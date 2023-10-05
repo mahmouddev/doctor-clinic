@@ -137,7 +137,7 @@
                     <div class="col-lg-12 col-xl-7">
                         <div class="card">
                             <div class="card-body p-5">
-                                <h2>Hey {{ $prescription->patient->name}},</h2>
+                                <h2>{{__("Hey")}} {{ $prescription->patient->name}},</h2>
                                 <p class="fs-sm">
                                     {!!  __('This is the prescription for a visit in :date .' , ['date' => "<strong>{$prescription->appointment->dov->toDateString()}</strong>" ]) !!}
                                 </p>

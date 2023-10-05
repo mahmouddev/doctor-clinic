@@ -15,9 +15,9 @@
 			</div>
 			<div class="col-lg-3 d-flex justify-content-end align-items-start">             
 				@can('invoices-create')
-				<a href="{{route('admin.clinic.invoices.create')}}">
+				{{-- <a href="{{route('admin.clinic.invoices.create')}}">
 					<span class="btn btn-primary"><span class="fas fa-plus"></span> {{ __('Add') }}</span>
-				</a>
+				</a> --}}
 				@endcan
 			</div>
 		</div>

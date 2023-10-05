@@ -37,13 +37,20 @@ class BackendInvoiceController extends Controller
      */
     public function index(Request $request)
     {
-        $invoices = $this->repository->where(function ($q) use ($request) {
+        $invoices = $this->repository->scopeQuery(function($q) use ($request){
+            $q->leftJoin('patients' , 'patients.id' , 'patient_id')
+                ->select('invoices.*' , 'patients.name', 'patients.phone', 'patients.email');
             if ($request->id != null)
                 $q->where('id', $request->id);
             if ($request->q != null)
-                $q->where('name', 'LIKE', '%' . $request->q . '%');
-        })->orderBy('id', 'DESC')
-            ->paginate();
+                $q->where('patients.name', 'LIKE', '%' . $request->q . '%')
+                    ->orWhere('patients.phone', 'LIKE', '%' . $request->q . '%')
+                    ->orWhere('patients.email', 'LIKE', '%' . $request->q . '%');
+                return $q;
+        })
+        ->orderBy('id', 'DESC')
+        ->paginate();
+
         return view('admin.clinic.invoices.index', compact('invoices'));
     }
 
@@ -54,7 +61,7 @@ class BackendInvoiceController extends Controller
      */
     public function create()
     {
-        return view('admin.clinic.invoices.create');
+        //return view('admin.clinic.invoices.create');
     }
 
     public function view($invoiceId)
@@ -78,8 +85,8 @@ class BackendInvoiceController extends Controller
                 'appointment_id' => $request->appointment_id,
                 'patient_id' => $request->patient_id,
                 'total_price' => $request->total,
-                'total_recieved' => $request->total_recieved,
-                'change' => $request->change,
+                'total_recieved' => $request->total_recieved || $request->total,
+                'change' => $request->change || 0,
                 'status' => 'paied',
             ]);
         } catch (Exception $e) {

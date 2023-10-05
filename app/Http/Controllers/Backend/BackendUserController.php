@@ -43,7 +43,9 @@ class BackendUserController extends Controller
             if ($request->id != null)
                 $q->where('id', $request->id);
             if ($request->q != null)
-                $q->where('name', 'LIKE', '%' . $request->q . '%')->orWhere('phone', 'LIKE', '%' . $request->q . '%')->orWhere('email', 'LIKE', '%' . $request->q . '%');
+                $q->where('name', 'LIKE', '%' . $request->q . '%')
+                    ->orWhere('phone', 'LIKE', '%' . $request->q . '%')
+                    ->orWhere('email', 'LIKE', '%' . $request->q . '%');
         })->orderBy('id', 'DESC')->paginate();
 
         return view('admin.users.index', compact('users'));
