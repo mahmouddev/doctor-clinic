@@ -1,10 +1,10 @@
 @extends('vendor.installer.layouts.master')
 @section('template_title')
-    Doctor Clinic Installer
+    {{ env("EN_APP_NAME") }} Installer
 @endsection
 
 @section('title')
-    Doctor Clinic Installer
+    {{ env("EN_APP_NAME") }} Installer
 @endsection
 @section('style')
 @endsection

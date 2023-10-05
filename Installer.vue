@@ -7,7 +7,7 @@
             </h6>
     </div>
     <p  v-if="!requirements_page && !permission_page && !complete_installation_page">
-        Welome at {{  script_name  }} installer , this is easy installer to help you install {{  script_name  }}  in few easy steps
+        Welome at{{ env("EN_APP_NAME") }} installer , this is easy installer to help you install{{ env("EN_APP_NAME") }} in few easy steps
     </p>
     <span v-html="page"  v-if="requirements_page || permission_page"></span>
     <div class="loader"  v-if="loader && (requirements_page || permission_page)"></div>
@@ -190,10 +190,8 @@ export default {
     props: {        
     },
     data() {
-        console.log(import.meta.env);
         return {
             errors: [],
-            script_name : import.meta.env.VITE_EN_APP_NAME,
             login_url: window.installer.login_url,
             error_message: '',
             name: null,
@@ -204,7 +202,7 @@ export default {
             requirements_page: false,
             complete_installation_page: false,
             page: '',
-            app_name: import.meta.env.VITE_EN_APP_NAME,
+            app_name: 'Doctor Clinic',
             app_timezone: null,
             database_connection: 1,
             database_host: 'localhost',
