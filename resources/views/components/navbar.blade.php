@@ -20,6 +20,7 @@
                         class="d-flex justify-content-center align-items-center cursor-pointer">
                         <i class="fi fi-{{ config('core.locale.languages')[app()->getLocale()]['flag']}} font-2"></i>
                     </div>
+                    @if(config('core.locale.languages') && count(config('core.locale.languages')) > 1 )
                     <ul class="dropdown-menu shadow border-0" aria-labelledby="dropdownMenuButton1"
                         style="top: -3px;">
                         @foreach (collect(config('core.locale.languages'))->sortBy('name') as $code => $details)
@@ -32,6 +33,7 @@
                             @endif
                         @endforeach
                     </ul>
+                    @endif
                 </div>
             </div>
         </div>
