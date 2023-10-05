@@ -25,8 +25,8 @@
             --text-dir: {{ app()->getLocale() == 'ar' ? 'right' : 'left' }};
         }
     </style>
-    <title>clinic</title>
-    <meta name="title" content="clinic">
+    <title>{{ env( \Str::upper(app()->getLocale())."_APP_NAME" , "clinic")  }}</title>
+    <meta name="title" content="{{ env( \Str::upper(app()->getLocale())."_APP_NAME", "clinic")  }}">
     @livewireStyles
     @yield('styles')
 

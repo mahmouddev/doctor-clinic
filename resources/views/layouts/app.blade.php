@@ -7,8 +7,8 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/images/icons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/images/icons/favicon-16x16.png">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>clinic</title>
-    <meta name="title" content="clinic">
+    <title>{{ env( \Str::upper(app()->getLocale())."_APP_NAME" , "clinic")  }}</title>
+    <meta name="title" content="{{ env( \Str::upper(app()->getLocale())."_APP_NAME", "clinic")  }}">
 
     @livewireStyles
     @vite('resources/css/dashboard.css')
