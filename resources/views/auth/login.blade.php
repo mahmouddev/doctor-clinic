@@ -77,7 +77,7 @@
                             </div>
 
                             <div class="col-12 p-0 row d-flex align-items-center">
-                                <div class="col-12 col-lg-12 p-2">
+                                {{-- <div class="col-12 col-lg-12 p-2">
                                     <div class="form-group row ">
                                         <div class="col-12 p-0">
                                             <input class="form-check-input ms-2 me-0" type="checkbox" name="remember" id="remember" {{ old('remember')||old('remember')==null ? 'checked' : '' }} style="position:relative;height: 20px;width: 20px;cursor: pointer;">
@@ -87,7 +87,7 @@
                                             </label>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 @if(env('APP_ENV') == 'production')
                                 <div class="col-12 col-lg-12 p-2 ">
                                     <div class="form-group mb-0 @error('g-recaptcha-response') has-validation @enderror">
