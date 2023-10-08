@@ -4,7 +4,7 @@
 	<!-- breadcrumb -->
 	<x-bread-crumb :breads="[
 			['url' => url('/admin') , 'title' => __('Admin panel') , 'isactive' => false],
-			['url' => route('admin.clinic.appointments.today-appointments') , 'title' => __('Today appointments') , 'isactive' => true],
+			['url' => route('admin.clinic.appointments.today-appointments') , 'title' => __('Today Appointments') , 'isactive' => true],
 		]">
 		</x-bread-crumb>
 	<!-- /breadcrumb -->
