@@ -174,7 +174,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td class="px-0">{{ $invoice->appointment->type}}</td>
+                                            <td class="px-0">{{ __($invoice->appointment->type)}}</td>
                                             <td class="text-end px-0">${{ $invoice->total_price }}</td>
                                         </tr>
                                     </tbody>

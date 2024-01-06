@@ -181,7 +181,12 @@ return [
         'total'                 => 'اجمالى العناصر',
         'total_recieved'        => 'اجمالى المستلم',
         'change'                => 'الباقى',
-        "g-recaptcha-response"  => "تحقيق الهوية"
+        "g-recaptcha-response"  => "تحقيق الهوية",
+        "dob"                   => "تاريخ الميلاد",
+        "gendar"                => "النوع",
+        "type"                  => "غرض الموعد",
+        "appointment_id"        => "تاريخ الموعد",
+        "prescription"          => "تفاصيل الوصفه الطبيه"
 
     ],
 ];

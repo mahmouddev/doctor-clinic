@@ -41,7 +41,7 @@
                                         <input type="text" name="name" required minlength="3" maxlength="190"
                                             class="form-control px-4 @error('name') is-invalid @enderror" value="{{ old('name',  $patient->name) }}">
                                         <span class="invalid-feedback position-absolute">
-                                            <strong>{{ $errors->first('name') ?: __('validation.required' , ['attribute' => 'name']) }}</strong>
+                                            <strong>{{ $errors->first('name') ?: __('validation.required' , ['attribute' => __('Name')]) }}</strong>
                                         </span>
                                     </div>
                                 </div>
@@ -59,7 +59,7 @@
                                         <input type="email" name="email" class="form-control px-4 @error('email') is-invalid @enderror"
                                             value="{{ old('email',  $patient->email ) }}">
                                         <span class="invalid-feedback position-absolute">
-                                            <strong>{{ $errors->first('email') ?: __('validation.required' , ['attribute' => 'email']) }}</strong>
+                                            <strong>{{ $errors->first('email') ?: __('validation.required' , ['attribute' => __('Email')]) }}</strong>
                                         </span>
                                     </div>
                                 </div>
@@ -74,7 +74,7 @@
                                         </span>
                                         <input type="phone" value="{{ old('phone' ,  $patient->phone)}}" name="phone" required class="form-control px-4 @error('phone') is-invalid @enderror" >
                                         <span class="invalid-feedback position-absolute">
-                                            <strong>{{ $errors->first('phone') ?: __('validation.required' , ['attribute' => 'phone']) }}</strong>
+                                            <strong>{{ $errors->first('phone') ?: __('validation.required' , ['attribute' => __('Phone') ]) }}</strong>
                                         </span>
                                     </div>
                                 </div>
@@ -86,7 +86,7 @@
                                     <div class="pt-1 position-relative">
                                         <input type="date" value="{{ old('dob' , $patient->dob->format('Y-m-d'))}}" name="dob" required class="form-control @error('dob') is-invalid @enderror" >
                                         <span class="invalid-feedback position-absolute">
-                                            <strong>{{ $errors->first('dob') ?: __('validation.required' , ['attribute' => 'date of birth']) }}</strong>
+                                            <strong>{{ $errors->first('dob') ?: __('validation.required' , ['attribute' => __('Date of birth')]) }}</strong>
                                         </span>
                                     </div>
                                 </div>
@@ -109,7 +109,7 @@
                                                 {{ __('Female') }}</option>
                                         </select>
                                         <span class="invalid-feedback position-absolute">
-                                            <strong>{{ $errors->first('gendar') ?: __('validation.required' , ['attribute' => 'gendar']) }}</strong>
+                                            <strong>{{ $errors->first('gendar') ?: __('validation.required' , ['attribute' => __('Gendar')]) }}</strong>
                                         </span>
                                     </div>
                                 </div>

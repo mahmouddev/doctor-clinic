@@ -54,7 +54,7 @@
 									<td>{{$appointment->id}}</td>
 									<td>{{@$appointment->patient->name}}</td>
 									<td>{{@$appointment->patient->phone}}</td>
-									<td>{{$appointment->type}}</td>
+									<td>{{ __($appointment->type)}}</td>
 									<td>{{$appointment->dov->toDateString()}}</td>
 									<td>
 										@can('appointments-update')

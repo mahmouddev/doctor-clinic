@@ -1,10 +1,10 @@
 @extends('vendor.installer.layouts.master')
 @section('template_title')
-    {{ env("EN_APP_NAME") }} Installer
+    {{ __('Installer') . ' '. env("EN_APP_NAME " , "العياده") }} 
 @endsection
 
 @section('title')
-    {{ env("EN_APP_NAME") }} Installer
+    {{ __('Installer') . ' '. env("EN_APP_NAME " , "العياده") }} 
 @endsection
 @section('style')
 @endsection

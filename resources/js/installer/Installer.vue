@@ -7,25 +7,24 @@
             </h6>
     </div>
     <p  v-if="!requirements_page && !permission_page && !complete_installation_page">
-        Welome at {{  script_name  }} installer , this is easy installer to help you install {{  script_name  }}  in few easy steps
+        {{ __('Welome at installer , this is easy installer to help you finish install in few easy steps') }} 
     </p>
     <span v-html="page"  v-if="requirements_page || permission_page"></span>
     <div class="loader"  v-if="loader && (requirements_page || permission_page)"></div>
     <div class="buttons">
         <a class="button" @click="permissions()" v-if="requirements_page && permissions_button && !loader">
-            Check Directories Permissions
-             
+            {{ __('Check Directories Permissions') }}
         </a>
         <a class="button" @click="requirements()" v-if="!requirements_page && !permission_page && !complete_installation_page">
-            Start instalation
+            {{ __('Start instalation') }}
             
         </a>
         <a class="button" @click="completeInstallationPage()" v-if="permission_page && complete_installation_button && !loader">
-            Configure Environment
+            {{ __('Configure Environment') }}
             
         </a>
         <a class="button" @click="permissions()" v-if="permission_page && !complete_installation_button && !loader">
-            Retry
+            {{ __('Retry') }}
             
         </a>
     </div>
@@ -45,14 +44,14 @@
             <pre><code>{{ finalEnvFile }}</code></pre>
 
             <div class="buttons">
-                <a :href="login_url" class="button">Click here to exit</a>
+                <a :href="login_url" class="button">{{ __('Click here to exit') }} </a>
             </div>
         </div>
         <div v-if="!finished">
             <input id="tab1" type="radio" name="tabs" class="tab-input" checked />
             <div class="alert alert-danger" id="error_alert" style="background:#6fe373" v-if="connection_exists">
                 <h6 style="margin: 0; color: #fff; font-size:15px; line-height:1.6em">
-                    Database connection tested successfully
+                    {{__('Database connection tested successfully') }}
                 </h6>
             </div>
 
@@ -164,11 +163,11 @@
                     <div class="loader" v-if="loader"></div>
                     <div class="buttons" v-if="!loader">
                         <button class="button" type="button" @click="testConnection()" v-if="!connection_exists">
-                            Test DB Connection
+                            {{ __('Test DB Connection') }}
                             
                         </button>
                         <button class="button" type="button" @click="completeInstallation()" v-if="connection_exists">
-                            Install
+                            {{__('Install')}}
                             
                         </button>
                     </div>
@@ -186,6 +185,7 @@
 
 import axios  from "axios";
 export default {
+    inject: ['__'],
     name: 'Installer',
     props: {        
     },

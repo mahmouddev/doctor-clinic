@@ -34,7 +34,7 @@
                                     <div class="pt-1 position-relative">
                                         <input type="date" value="{{ old('dov' , now()->toDateString('Y-m-d')) }}" name="dov"  min="{{ now()->toDateString('Y-m-d') }}" class="form-control @error('dov') is-invalid @enderror" >
                                         <span class="invalid-feedback position-absolute">
-                                            <strong>{{ $errors->first('dov') ?: __('validation.required' , ['attribute' => 'Date of visit']) }}</strong>
+                                            <strong>{{ $errors->first('dov') ?: __('validation.required' , ['attribute' => __('Date of visit')]) }}</strong>
                                         </span>
                                     </div>
                                 </div>
@@ -54,7 +54,7 @@
                                                 {{ __('Follow up') }}</option>
                                         </select>
                                         <span class="invalid-feedback position-absolute">
-                                            <strong>{{ $errors->first('type') ?: __('validation.required' , ['attribute' => 'type']) }}</strong>
+                                            <strong>{{ $errors->first('type') ?: __('validation.required' , ['attribute' =>  __('Visit type') ]) }}</strong>
                                         </span>
                                     </div>
                                 </div>

@@ -187,7 +187,7 @@ class InstallerRepositoryEloquent extends BaseRepository implements InstallerRep
             'APP_NAME=\'' . $request['app_name'] . "'\n" .
             'APP_ENV=local' . "\n" .
             'APP_KEY=' . 'base64:' . base64_encode(Str::random(32)) . "\n" .
-            'APP_DEBUG=true' . "\n" .
+            'APP_DEBUG=false' . "\n" .
             'APP_LOG_LEVEL=debug' . "\n" .
             'APP_URL=' . $app_url . "\n\n" .
             'DB_CONNECTION=' . $request['database_connection'] . "\n" .

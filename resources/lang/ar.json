@@ -107,5 +107,21 @@
     "Hey" : "أهلا",
     "Login to :app_name" : "تسجيل الدخول الى :app_name",
     "Login" : "تسجيل دخول",
-    "Today Appointments" : "مواعيد اليوم"
+    "Welome at installer , this is easy installer to help you finish install in few easy steps" : "مرحبًا بك في برنامج التثبيت، هذا برنامج التثبيت السهل الذي يساعدك على إنهاء التثبيت في بضع خطوات سهلة",
+    "Installer" : "مُثبت",
+    "Install" : "تثبيت",
+    "Start instalation" : "إبداء التثبيت",
+    "Check Directories Permissions" : "التاكد من صلاحيات الملفات",
+    "Configure Environment" : "اعدادات البيئه",
+    "Test DB Connection" : "تجربه الاتصال بقاعده البيانات",
+    "Retry" : "اعاده التجربة",
+    "Click here to exit" : "إضغط للخروج",
+    "Database connection tested successfully" : "تم اختبار الانصال بنجاح",
+    "Male" : "ذكر",
+    "female" : "أنثى", 
+    "Check" : "كشف",
+    "Follow up" : "متابعه",
+    "check" : "كشف",
+    "follow up" : "متابعه",
+    "Prescription details" : "تفاصيل الوصفه الطبيه"
 }

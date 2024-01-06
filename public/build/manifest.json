@@ -2437,7 +2437,7 @@
     "src": "resources/js/dashboard.js"
   },
   "resources/js/installer.js": {
-    "file": "assets/installer-8185d161.js",
+    "file": "assets/installer-efb734cd.js",
     "imports": [
       "__plugin-vue_export-helper-77894273.js"
     ],
