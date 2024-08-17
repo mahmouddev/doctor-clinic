@@ -1,8 +1,8 @@
 {
     "name": "mahmouddev/clinic",
     "type": "project",
-    "description": "The basic functions of restaurant management system",
-    "keywords": ["restaurant", "foods" , "mangment"],
+    "description": "The basic functions of clinics management system",
+    "keywords": ["clinics" , "mangment"],
     "license": "MIT",
     "require": {
         "php": "^8.0.2",

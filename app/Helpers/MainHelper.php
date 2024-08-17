@@ -1,40 +1,10 @@
 <?php
 namespace App\Helpers;
-use App\Models\MenuLink;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Notification;
-use Illuminate\Support\Facades\Schema;
 
 class MainHelper {
-
-    protected static $lowerLimit = 70;
-    protected static $upperLimit = 255;
-    protected static $colorGap = 20;
     protected static $generated = array();
     
-    public static function notify_user(
-        $options=[]
-    ){
-        $options = array_merge([
-            'user_id'=>1,
-            'content'=>[],
-            'action_url'=>"",
-            'methods'=>['database'],
-            'image'=>"",
-            'btn_text'=>"عرض الإشعار"
-        ],$options);
-        $user = \App\Models\User::where('id',$options['user_id'])->first();
-        if($user!=null){
-            \App\Models\User::where('email', $user->email)->first()->notify(
-                (new \App\Notifications\GeneralNotification())
-                ->setContent($options['content'])
-                ->setMethods($options['methods'])
-                ->setActionUrl($options['action_url'])
-                ->setActionText($options['btn_text'])
-                ->setActionText($options['image'])
-            );
-        }
-    }
     public static function recaptcha($cap){
         
          $ipAddress = 'NA';
@@ -70,91 +40,6 @@ class MainHelper {
 
     }
 
-    public static function notify_visitors(
-        $options=[]
-    ){
-        $options = array_merge([
-            'emails'=>["admin@admin.com"],
-            'content'=>[],
-            'action_url'=>"",
-            'methods'=>['mail'],
-            'image'=>"",
-            'btn_text'=>"عرض الإشعار"
-        ],$options);
-         Notification::route('mail', $options['emails'])
-                ->notify((new \App\Notifications\GeneralNotification())
-                    ->setContent($options['content'])
-                ->setMethods($options['methods'])
-                ->setActionUrl($options['action_url'])
-                ->setActionText($options['btn_text'])
-                ->setActionText($options['image']));
-    }
-    
-    public static function make_error_report(
-        $options=[]
-    ){
-        $options = array_merge([
-            'error'=>"",
-            'error_code'=>"",
-            'details'=>json_encode(request()->instance())
-        ],$options);
-        try{
-            if(Schema::hasTable('report_errors'))
-            \App\Models\ReportError::create([
-                'user_id'=>(auth()->check()?auth()->user()->id:null),
-                'title'=>$options['error'],
-                'code'=>$options['error_code'],
-                'url'=>url()->previous(),
-                'ip'=>\UserSystemInfoHelper::get_ip(),
-                'user_agent'=>request()->header('User-Agent'),
-                'request'=>json_encode(request()->all()),
-                'description'=>$options['details']
-            ]);
-        }catch(\Exception $e){}
-    }
-    public static function binaryToString($binary)
-    {
-        $binaries = explode(' ', $binary);
-     
-        $string = null;
-        foreach ($binaries as $binary) {
-            $string .= pack('H*', dechex(bindec($binary)));
-        }
-     
-        return $string;    
-    }
-    /*/src=[\"\'][^\'\']+[\"\']/*/
-
-    public static function focus_urls($string)
-    {
-         $url_regex = '~(http|ftp)s?://[a-z0-9.-]+\.[a-z]{2,7}(/\S*)?~i';
-         return preg_replace($url_regex, " <a href='$0' target='_blank' rel='nofollow' style='font-family: inherit;'>$0</a> ",urldecode(htmlspecialchars($string)));
-    }
-    public static function slug($string){
-        $t = $string; 
-        $specChars = array(
-            ' ' => '-',    '!' => '',    '"' => '',
-            '#' => '',    '$' => '',    '%' => '',
-            '&amp;' => '','&nbsp;' => '', 
-            '\'' => '',   '(' => '',
-            ')' => '',    '*' => '',    '+' => '',
-            ',' => '',    '₹' => '',    '.' => '',
-            '/-' => '',    ':' => '',    ';' => '',
-            '<' => '',    '=' => '',    '>' => '',
-            '?' => '',    '@' => '',    '[' => '',
-            '\\' => '',   ']' => '',    '^' => '',
-            '_' => '',    '`' => '',    '{' => '',
-            '|' => '',    '}' => '',    '~' => '',
-            '-----' => '-',    '----' => '-',    '---' => '-',
-            '/' => '',    '--' => '-',   '/_' => '-',    
-        ); 
-        foreach ($specChars as $k => $v) {
-            $t = str_replace($k, $v, $t);
-        }
- 
-        return substr($t,0,230);
-    }
-    
     public static function get_conversion($file_name,$conversion="original",$new_extension="webp"){
         if($new_extension=="main" || $conversion ==null)
             $new_extension = pathinfo($file_name, PATHINFO_EXTENSION);
@@ -165,22 +50,7 @@ class MainHelper {
         }
         return $file_name;
     }
-    public static function move_media_to_model_by_id($id,$model,$collection="default"){
-        $temp_files = \App\Models\TempFile::where('name',$id)->with(['media'])->get();
-        foreach($temp_files as $file){
-            foreach($file->media as $media){
-                $media->move($model,$collection);
-            }
-        }
-        return 1;
-    }
 
-
-    public static function htmlLang()
-    {
-        return str_replace('_', '-', app()->getLocale());
-    }
-    
     /**
      * @param $locale
      */
@@ -192,7 +62,6 @@ class MainHelper {
         static::setLocaleReadingDirection($locale);
     }
 
-
     /**
      * @param $locale
      */
@@ -200,7 +69,6 @@ class MainHelper {
     {
         app()->setLocale($locale);
     }
-
 
     /**
      * @param $locale
@@ -210,7 +78,6 @@ class MainHelper {
         setlocale(LC_TIME, $locale);
     }
 
-
     /**
      * @param $locale
      */
@@ -218,7 +85,6 @@ class MainHelper {
     {
         Carbon::setLocale($locale);
     }
-
 
     /**
      * @param $locale
@@ -238,8 +104,6 @@ class MainHelper {
         }
     }
 
-
-
     /**
      * @param $locale
      * @return mixed
@@ -248,7 +112,5 @@ class MainHelper {
     {
         return config('core.locale.languages')[$locale]['name'];
     }
-
-
 
 }
